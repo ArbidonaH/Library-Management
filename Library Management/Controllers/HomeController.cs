@@ -15,7 +15,7 @@ namespace Library_Management.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction();
         }
 
         public IActionResult Privacy()

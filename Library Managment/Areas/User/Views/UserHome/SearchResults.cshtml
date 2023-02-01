@@ -1,0 +1,51 @@
+﻿@using Library_Managment.Areas.Admin.Models;
+@model List<Library_Managment.Models.Book>;
+
+
+<head>
+    <style>
+        .container {
+            display: flex;
+        }
+      .item{
+
+      margin: 10px;
+      text-align: center;
+      padding: 20px;
+      background-color: #FDFDFE;
+      box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    }
+    .image-grid{
+
+      padding: 30px;
+      width: 100%;
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    
+    </style>
+</head>
+
+<div class="container" >
+    <div class="row image-grid">
+
+        @foreach (var book in Model) {
+
+            <div class="item">
+                <a asp-area="User" asp-controller="UserHome" asp-action="BookDetails" asp-route-id="@book.Id">
+                    <img alt="images/book1" class="img-responsive center-block" src="~/BookImages/@book.Image">
+                </a>
+                <h3>@book.Name</h3>
+                <span>@book.Author</span>
+            </div>
+
+        }
+
+
+    </div>
+</div>
+

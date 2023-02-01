@@ -1,0 +1,61 @@
+﻿@using Library_Managment.Areas.Admin.Models;
+@model PaginatedList<Library_Managment.Models.Contact>
+@{
+    ViewData["Title"] = "Manage Contacts";
+}
+<div class="container">
+    <br />
+    <h1 style="font-family: 'Arvo', serif;" class="text-center">@ViewData["Title"]</h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Manage
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ContactId">Details</a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ContactId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<div class="container pb-5">
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+
+    <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+    <br /><br /><br />
+</div>

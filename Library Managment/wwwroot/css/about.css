@@ -1,0 +1,109 @@
+.div-space {
+    margin-right: 15px;
+    margin-left: 15px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.div-back-color {
+    background-image: linear-gradient(to right top, #168cd8, #009bdf, #00a9e5, #00b7e9, #12c5eb);
+}
+.img-first-div{
+    animation: img-loader 1s ease-in 800ms;
+    animation-fill-mode:forwards;
+    transform: scale(0);
+}
+.box-div {
+    background-color: floralwhite;
+}
+
+    .box-div p {
+        font-size: 18px;
+        font-style: italic;
+        word-spacing: 4px;
+        letter-spacing: 4px;
+        font-family: Georgia, "Times New Roman", serif;
+    }
+
+.quote-par {
+    font-style: italic;
+    word-spacing: 2px;
+    letter-spacing: 4px;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.h4-title {
+    font-family: 'Comic Sans MS';
+    letter-spacing: 2px;
+    word-spacing: 1px;
+    text-align: center;
+    animation: 2s div-title ease-in 6.2s;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+}
+
+.img-div-arb {
+    height: 600px;
+    background-image: url(../Img/AboutUs/Arbidona-Hodaj.jpg);
+    background-size: cover;
+    overflow: hidden;
+    animation: 2s div-arb ease-in 400ms;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+}
+
+
+.img-div-rrez{
+    height: 600px;
+    background-image: url(../Img/AboutUs/Rrezarta-Idrizi.jpg);
+    background-size: cover;
+    overflow: hidden;
+    animation: 2s div-rrez ease-in 2s;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+}
+@keyframes img-loader{
+    0%{
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes div-rrez{
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes div-arb {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes div-jon {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes div-title {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

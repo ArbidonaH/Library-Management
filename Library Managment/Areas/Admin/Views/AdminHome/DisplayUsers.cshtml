@@ -1,0 +1,86 @@
+﻿@using Library_Managment.Areas.Admin.Models;
+@using Microsoft.AspNetCore.Identity;
+@model PaginatedList<Library_Managment.Models.UserNewData>
+@inject UserManager<UserNewData> _userManager;
+@{
+    ViewData["Title"] = "Manage Users";
+}
+<div class="container">
+    <br />
+    <h1 style="font-family: 'Arvo', serif;" class="text-center">@ViewData["Title"]</h1>
+    <br />
+    <form asp-action="DisplayUsers" method="get">
+        <div class="form-inline ">
+            <p>
+                <input type="text" name="SearchString" class="form-control" style="max-width:400px;" value="@ViewData["CurrentFilter"]" placeholder="Find User" />
+                <input type="submit" value="Search" class="btn btn-success" /> -
+                <a class="btn btn-primary" asp-action="DisplayUsers">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email/Username</th>
+                <th>Change Role</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model) {
+            <tr>
+                <td>@user.Name</td>
+
+                <td>@user.Surname</td>
+
+                <td>@user.Email</td>
+
+                @{
+
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var displayRoleName = "";
+                    var role = "";
+
+                    if (roles[0] == "Admin") {
+                        displayRoleName = "Make User";
+                        role = "User";
+                    } else if (roles[0] == "User") {
+                        displayRoleName = "Make Admin";
+                        role = "Admin";
+                    }
+                }
+                <td>
+                    <a asp-area="Admin" asp-controller="AdminHome" asp-action="ChangeRoles" asp-route-Role="@role" asp-route-userId="@user.Id" class="btn btn-light">@displayRoleName</a>
+                </td>
+
+                <td>
+                    <a asp-area="Admin" asp-controller="AdminHome" asp-action="DeleteUser" asp-route-Id="@user.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+<div class="container">
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+
+    <a asp-action="DisplayUsers" asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+    <br /><br /><br />
+</div>

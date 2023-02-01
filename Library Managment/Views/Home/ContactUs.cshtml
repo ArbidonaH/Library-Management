@@ -1,0 +1,87 @@
+﻿@model Library_Managment.Models.Contact
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container">
+
+    <h1 class="mbr-text text-center mbr-light pb-3 mbr-fonts-style display-2">Contact</h1>
+    <p class="lead text-info text-center">You can find us here and contact us for any problems you may have</p>
+    <hr />
+    <br />
+    <div class="row justify-content-between contact-blocks pt-5 pb-5 pr-3 pl-3 text-white">
+        <div class="col-md-10">
+            <h2 class="pb-3 text-white">Library Management System - LMS</h2>
+            <br />
+            <div class="row justify-content-center">
+                <div class="col-md">
+                    <h5 class="text-white">Location: Mitrovice</h5>
+                    <h5 class="text-white">Bibloteka Mitrovice</h5>
+                </div>
+                <div class="col-md">
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">
+                            <img src="~/Img/ic_call_24px.png" alt="phone" />
+                        </div>
+                        <div class="col-md-2">
+                            <p class="text-white">044111333</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-2">
+                            <img src="~/Img/ic_mail_outline_24px.png" />
+                        </div>
+                        <div class="col-md-2">
+                            <p>LBMitrovice@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <img width="100px" src="~/Img/ic_room_24px.png" alt="Place" />
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="embed-responsive embed-responsive-16by9" style="  margin-bottom: 10px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11692.83175241121!2d20.8646615!3d42.8895594!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x66ca6224f668eb4f!2sBiblioteka%20%22Latif%20Berisha%22!5e0!3m2!1sen!2s!4v1675123663008!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"  frameborder="0" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+
+        <div class="col-md">
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label"></label>
+                    <textarea asp-for="Message" row="10" class="form-control"> </textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <br />
+    <br />
+</div>
